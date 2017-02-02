@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="myFirstApp">
     <head>
         <meta charset="utf-8">
         <script src="angular.min.js"></script>
@@ -6,6 +7,34 @@
         <title>Hello AngularJS</title>
     </head>
     <body>
-      <h1>Hello AngularJS Go!</h1>
+      <h1>AngularJS App Go!</h1>
+      <div ng-controller="MyFirstController" >
+        <input type="text" ng-model="name" ng-blur="upper();">  <br>
+            Inside my input is: {{name}} {{sayLoveMessage()}}   <br>
+            Truth: {{sayLoveMessage() | truth : 'HEALTHY' : 'cookie'}} <br>
+            Big Truth: {{sayLoveMessage() | truth : 'HEALTHY' : 'cookie' | uppercase }} <br>
+        <div>
+            <button ng-click="feedGuy()">Feed the Guy</button>
+            Cost: {{cookieCost | currency }}
+            <br>
+            <img ng-src="images/yaakov_{{stateOfBeing}}.png"></img>
+
+        </div>
+      </div>
+
+      <div ng-controller="ShoppingListController"><br>
+        <h3>Shopping List:</h3>
+        <input type="text" ng-model="shoppingList2[0].quantity" placeholder="Quantity for Milk">
+        <input type="text" ng-model="search" placeholder="Search">
+
+        <ul>
+          <li ng-repeat="item in shoppingList2 | filter: search">{{$index + 1}}. Buy {{item.quantity}} of {{item.name}}</li>
+        </ul>
+        <input type="text" ng-model="newItemName" placeholder="Item Name">
+        <input type="text" ng-model="newItemQuantity" placeholder="Item Quantity">
+        <button ng-click="addNewItem()">Add Item</button>
+      </div>
     </body>
+
+
 </html>
